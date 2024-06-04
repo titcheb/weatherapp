@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import axios from "axios";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 const API_URL = "http://api.weatherapi.com/v1/current.json";
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -264,6 +264,6 @@ app.post("/bearerToken", async (req, res) => {
   
 });
 
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
 });
