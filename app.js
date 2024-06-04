@@ -3,9 +3,12 @@ import bodyParser from "body-parser";
 import axios from "axios";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const API_URL = "http://api.weatherapi.com/v1/current.json";
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(enforce.HTTPS({
+  trustProtoHeader: true
+}));
 app.use(express.static("public"));
 //TODO 1: Fill in your values for the 3 types of auth.
 const yourUsername = "titche";
@@ -265,4 +268,4 @@ app.post("/bearerToken", async (req, res) => {
 });
 const http = require('http');
 const server = http.createServer();
-server.listen(port);
+server.listen(port,'0.0.0.0');
