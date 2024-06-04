@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Express App</title>
+  <style>
+  
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+      margin-top: 30px;
+      
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      position: relative;
+      background-image:url("nature.jpg");
+      background-size:cover;
+       box-shadow: 10px 0 0 rgb(218, 218, 218);
+      
+      background-position: center;
+      background-repeat: no-repeat;
+      
+    }
+
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    #noAuth {
+      background-color: #3498db;
+    }
+
+    #basicAuth {
+      background-color: #2ecc71;
+    }
+
+    #apiKey {
+      background-color: #f1c40f;
+    }
+
+    #bearerToken {
+      background-color: #e74c3c;
+    }
+
+    .response-area {
+      
+      background-color: #f0f0f000;
+    display: flex;
+    flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      
+    }
+   .edit{
+
+    
+      display:flex;
+      
+      
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      height: 250px;
+      padding: 30px;
+      border-radius: 10%;
+      margin: 5px;
+      
+      
+      
+      /* From https://css.glass */
+background: rgba(179, 37, 37, 0.1);
+border-radius: 16px;
+box-shadow: 0 4px 10px rgba(7, 6, 6, 0.384);
+backdrop-filter: blur(4.1px);
+-webkit-backdrop-filter: blur(4.1px);
+border: 1px solid rgba(255, 255, 255, 0.349);
+    }
+    p{
+      font-size: 20px;
+      padding: 0;
+      font-family:'Times New Roman', Times, serif;
+      font-weight: 700;
+      line-height: 0;
+      padding: 2px;
+      color: rgb(255, 255, 255);
+    }
+    .country{
+      color: #f35715;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .feelslike{
+      font-size: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(249, 253, 255);
+    }
+    h1{
+      font-size: 4rem;
+      background-color: #00000044;
+      color: white;
+      padding: 10px;
+      border-radius: 5%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Weather</h1>
+  <div class="response-area">
+    
+      
+        <% if(locals.content) {%>
+          <% content.forEach(element => {%>
+            <div class="edit">
+              
+        <img src="<%=element.query.current.condition.icon %>" alt="" width="80px" height="80px">
+      <p><%=element.query.current.condition.text%></p>
+    <p class="country"><%=element.query.location.name %></p>
+    <p class="feelslike">Feels like <%=element.query.current.feelslike_c%>°</p>
+    <p><%=element.query.current.temp_c%>°</p>
+    
+  </div>
+    <% }); %>
+    <% } %>
+     
+
+    
+    
+  </div>
+</body>
+
+</html>
