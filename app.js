@@ -266,6 +266,5 @@ app.post("/bearerToken", async (req, res) => {
   */
   
 });
-const http = require('http');
-const server = http.createServer();
-server.listen(port,'0.0.0.0');
+
+app.listen(port,'0.0.0.0');
