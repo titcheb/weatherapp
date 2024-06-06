@@ -1,0 +1,13 @@
+<% if(locals.content) {%>
+    <% content.forEach(element => {%>
+      <div class="edit">
+        
+  <img src="<%=element.query.current.condition.icon %>" alt="" width="80px" height="80px">
+<p class="condition"><%=element.query.current.condition.text %></p>
+<p class="country"><%=element.query.location.name %></p>
+<p class="feelslike">Feels like <%=element.query.current.feelslike_c%>°</p>
+<p class="temperatur"><%=element.query.current.temp_c%>°</p>
+
+</div>
+<% }); %>
+<% } %>
