@@ -78,6 +78,7 @@ app.get("/", async (req, res) => {
 
 
 app.post("/",async (req, res) => {
+  
   try {
     const response = await axios.get(API_URL,{
       auth:{
@@ -91,8 +92,7 @@ app.post("/",async (req, res) => {
       }
     });
     const result = JSON.stringify(response.data);
-    
-    res.render("index.ejs", {image:response.data.current.condition.icon,condition:response.data.current.condition.text,country:response.data.location.name});
+  res.render("index.ejs", {image:response.data.current.condition.icon,condition:response.data.current.condition.text,country:response.data.location.name,feelslike:response.data.current.feelslike_c,temperatur:response.data.current.temp_c});
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.render("index.ejs", {
@@ -164,6 +164,6 @@ app.post("/apiKey",async (req, res) => {
 
 
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port,'0.0.0.0', () => {
   console.log(`Listening on port ${port}`);
 });

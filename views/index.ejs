@@ -2,8 +2,10 @@
 <html>
 
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
   <title>Express App</title>
   <style>
   
@@ -95,11 +97,11 @@ border: 1px solid rgba(255, 255, 255, 0.349);
     }
     p{
       font-size: 20px;
-      padding: 0;
+      padding: 5px;
       font-family:'Times New Roman', Times, serif;
       font-weight: 700;
       line-height: 0;
-      padding: 2px;
+      
       color: rgb(255, 255, 255);
     }
     .condition{
@@ -108,25 +110,28 @@ border: 1px solid rgba(255, 255, 255, 0.349);
     .country{
       color: #ce9315;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      
+       margin-bottom: 30px;
       
     }
     .feelslike{
       font-size: 15px;
       font-family: Arial, Helvetica, sans-serif;
       color: rgb(249, 253, 255);
+      margin-bottom: 30px;
     }
     h1{
-      font-size: 4rem;
+      font-size: 3rem;
       background-color: #00000044;
       color: white;
-      padding: 1%;
-      border-radius: 5%;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
     }
     .temperatur{
       font-size: 30px;
+      margin-bottom: 30px;
     }
-    @media only screen and (max-width: 868px) {
+    @media only screen and (max-width: 768px) {
       .response-area {
       
       background-color: #f0f0f000;
@@ -139,7 +144,14 @@ border: 1px solid rgba(255, 255, 255, 0.349);
       width: 100%;
       height: 100%;
       }
+      input{
+   font-size: 1rem;
+   color: cadetblue;
+   padding: 5px;
 }
+    
+}
+
 button{
   width: fit-content;
   height: fit-content;
@@ -147,6 +159,7 @@ button{
 }
 .searchCity{
   display: inline-flex;
+  flex-direction: row;
   justify-content: center;
   background-color: #f0f0f000;
   width: 400px;
@@ -159,6 +172,10 @@ input{
    font-size: 1.5rem;
    color: cadetblue;
    padding: 5px;
+   width: 200px;
+}
+.bkg{
+  background-color: #00000059;
 }
   </style>
   
@@ -166,18 +183,29 @@ input{
 
 <body>
   
-  <h1>Weather</h1>
-  <div class="searchCity">
-        <form action="/" method="POST">  
-          <input type="text" name="City" placeholder="City" required>
-          <button  id="weather" type="submit"><span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 48 48">
-            <path fill="#616161" d="M34.6 28.1H38.6V45.1H34.6z" transform="rotate(-45.001 36.586 36.587)"></path><path fill="#616161" d="M20 4A16 16 0 1 0 20 36A16 16 0 1 0 20 4Z"></path><path fill="#37474F" d="M36.2 32.1H40.2V44.400000000000006H36.2z" transform="rotate(-45.001 38.24 38.24)"></path><path fill="#64B5F6" d="M20 7A13 13 0 1 0 20 33A13 13 0 1 0 20 7Z"></path><path fill="#BBDEFB" d="M26.9,14.2c-1.7-2-4.2-3.2-6.9-3.2s-5.2,1.2-6.9,3.2c-0.4,0.4-0.3,1.1,0.1,1.4c0.4,0.4,1.1,0.3,1.4-0.1C16,13.9,17.9,13,20,13s4,0.9,5.4,2.5c0.2,0.2,0.5,0.4,0.8,0.4c0.2,0,0.5-0.1,0.6-0.2C27.2,15.3,27.2,14.6,26.9,14.2z"></path>
-            </svg></span></button>
-        </form>
+  
+  
+  <form action="/" method="post">
+    <div class="container">
       
-    
-    
-  </div>
+      <div class="row align-items-center p-3 ">
+        <h1>Väder</h1>
+        <div class="col-8">
+          
+          <input type="text" class="form-control mx-4 mx-md-3" name="City" placeholder="Stad">
+          
+        </div>
+        <div class="col-4">
+          <button type="submit" class="btn btn-info mx-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg></button>
+        </div>
+      </div>
+      
+      
+    </div>
+  </form>
+
   <div class="response-area">
     <% if(locals.image) {%>
     <div class="edit">
