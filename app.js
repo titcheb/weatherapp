@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
       },
       params:{
         key:yourAPIKey,
-        q:ip.slice(7),
+        q:'Halmstad',
         lang:"sv",
       }
     });
@@ -110,7 +110,7 @@ app.get("/vader", async (req,res)=>{
       },
       params:{
         key:yourAPIKey,
-        q:'auto:ip',
+        q:'Halmstad',
         days:5,
         lang:"sv",
       }
