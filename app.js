@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
       },
       params:{
         key:yourAPIKey,
-        q:'auto:'+ip.slice(7),
+        q:ip.slice(7),
         lang:"sv",
       }
     });
