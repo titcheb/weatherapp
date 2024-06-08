@@ -1,12 +1,13 @@
 import express, { response } from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import requestIp from "request-ip";
 
 const app = express();
 const port = process.env.PORT||3000;
 const API_URL = "http://api.weatherapi.com/v1/forecast.json";
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(requestIp.mw());
 app.use(express.static("public"));
 //TODO 1: Fill in your values for the 3 types of auth.
 const yourUsername = "titche";
@@ -16,6 +17,8 @@ const yourAPIKey = "a8789d617457406f8dc101750240406";
 const yourBearerToken = "966ec5ef-4571-43dd-8aee-3d4d14446586";
 let data=false;
 app.get("/", async (req, res) => {
+  const ip = req.clientIp;
+    
   try {
     const response = await axios.get(API_URL,{
       auth:{
@@ -24,7 +27,7 @@ app.get("/", async (req, res) => {
       },
       params:{
         key:yourAPIKey,
-        q:'auto:ip',
+        q:'auto:'+ip.slice(7),
         lang:"sv",
       }
     });
@@ -235,6 +238,6 @@ app.post("/apiKey",async (req, res) => {
 
 
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, '0.0.0.0',() => {
   console.log(`Listening on port ${port}`);
 });
