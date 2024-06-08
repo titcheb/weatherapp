@@ -1,0 +1,139 @@
+html{
+    padding: 0;
+    margin: 0;
+    
+}
+body{
+    height: 100vh;
+    background-color: black;
+}
+.bgimg{
+    background-image: url("nature.jpg");
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    box-shadow: 10px 5px 5px 5px  rgba(173, 216, 230, 0.062);
+    border-radius: 10px;
+}
+.shadow{
+    background-color: rgba(0, 0, 0, 0.61);
+    margin: 0;
+    padding: 20px;
+    border-radius: 10px;
+    
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.247);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+   
+}
+.main-card{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.main .forecasttitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding:20px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.548);
+    color: white;
+    border: 1px solid rgba(245, 222, 179, 0.205);
+}
+.search{
+    display: flex;
+    flex-direction: row;
+}
+.nav1{
+    position:fixed;
+    bottom: 0;
+    margin: 0;
+    margin:0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(20, 18, 18);
+    width: 100%;
+    height: 50px;
+
+}
+.nav1 a{
+    border: 1px solid rgb(44, 43, 43);
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5%;
+    margin: 10px;
+    color: #365E32;
+}
+.nav1 a:hover{
+    background-color: rgb(42, 42, 43);
+    color: #81A263;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .main-card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 80%;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        padding:20px;
+        margin: 10px;
+        background-color: rgba(0, 0, 0, 0.548);
+        color: white;
+        border: 1px solid rgba(245, 222, 179, 0.205);
+    }
+    .nav1{
+        position:fixed;
+        bottom: 0;
+        margin: 0;
+        margin:0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(20, 18, 18);
+        width: 100%;
+        height: 50px;
+    
+    }
+  }
+  

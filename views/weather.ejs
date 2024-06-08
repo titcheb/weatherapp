@@ -1,187 +1,51 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Express App</title>
-  <style>
+<%- include("partials/header.ejs") %>
   
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      align-content: center;
-      margin-top: 30px;
-      
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000000;
-      position: relative;
-      background-image:url("nature.jpg");
-      background-size:cover;
-       box-shadow: 10px 0 0 rgb(218, 218, 218);
-      
-      background-position: center;
-      background-repeat: no-repeat;
-      
-    }
-
-    button {
-      margin: 10px;
-      padding: 15px 30px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-    }
-
-    #noAuth {
-      background-color: #3498db;
-    }
-
-    #basicAuth {
-      background-color: #2ecc71;
-    }
-
-    #apiKey {
-      background-color: #f1c40f;
-    }
-
-    #bearerToken {
-      background-color: #e74c3c;
-    }
-
-    .response-area {
-      
-      background-color: #f0f0f000;
-    display: flex;
-    flex-direction: row;
-      align-items: center;
-      flex-wrap: wrap;
-      align-content: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      
-    }
-   .edit{
-
+  
+  
+  <form action="/weather" method="post">
     
-      display:flex;
       
       
-      flex-direction: column;
-      align-content: center;
-      justify-content: center;
-      align-items: center;
-      width: 250px;
-      height: 250px;
-      padding: 30px;
-      border-radius: 10%;
-      margin: 5px;
+       
+        
+          
+          <input type="text" class="form-control mx-4 mx-md-3" name="City" placeholder="Stad">
+          
+       
+        
+          <button type="submit" class="btn btn-info mx-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg></button>
+        
       
       
       
-      /* From https://css.glass */
-background: rgba(63, 13, 13, 0.37);
-border-radius: 16px;
-box-shadow: 0 4px 10px rgba(7, 6, 6, 0.664);
-backdrop-filter: blur(4.1px);
--webkit-backdrop-filter: blur(4.1px);
-border: 1px solid rgba(255, 255, 255, 0.349);
-    }
-    p{
-      font-size: 20px;
-      padding: 0;
-      font-family:'Times New Roman', Times, serif;
-      font-weight: 700;
-      line-height: 0;
-      padding: 2px;
-      color: rgb(255, 255, 255);
-    }
-    .condition{
-      line-height: 20px;
-    }
-    .country{
-      color: #ce9315;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      
-      
-    }
-    .feelslike{
-      font-size: 15px;
-      font-family: Arial, Helvetica, sans-serif;
-      color: rgb(249, 253, 255);
-    }
-    h1{
-      font-size: 4rem;
-      background-color: #00000044;
-      color: white;
-      padding: 1%;
-      border-radius: 5%;
-    }
-    .temperatur{
-      font-size: 30px;
-    }
-    @media only screen and (max-width: 868px) {
-      .response-area {
-      
-      background-color: #f0f0f000;
-    display: flex;
-    flex-direction: column;
-      align-items: center;
-      flex-wrap: wrap;
-      align-content: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      }
-}
-button{
-  width: fit-content;
-  height: fit-content;
- padding: 10px;
-}
-.searchCity{
-  display: inline-flex;
-  justify-content: center;
-  background-color: #f0f0f000;
-  width: 400px;
-  height: 40px;
-  padding: 10px;
-  margin-bottom: 10px;
+    
+  </form>
 
-}
-input{
-   font-size: 1.5rem;
-   color: cadetblue;
-}
-  </style>
-</head>
-
-<body>
-  <h1>Weather</h1>
-  <div class="searchCity">
-    <form action="/Weather" method="GET">
-      <input type="text" name="City" placeholder="City">
-      <button type="submit"><span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18" height="18" viewBox="0 0 48 48">
-        <path fill="#616161" d="M34.6 28.1H38.6V45.1H34.6z" transform="rotate(-45.001 36.586 36.587)"></path><path fill="#616161" d="M20 4A16 16 0 1 0 20 36A16 16 0 1 0 20 4Z"></path><path fill="#37474F" d="M36.2 32.1H40.2V44.400000000000006H36.2z" transform="rotate(-45.001 38.24 38.24)"></path><path fill="#64B5F6" d="M20 7A13 13 0 1 0 20 33A13 13 0 1 0 20 7Z"></path><path fill="#BBDEFB" d="M26.9,14.2c-1.7-2-4.2-3.2-6.9-3.2s-5.2,1.2-6.9,3.2c-0.4,0.4-0.3,1.1,0.1,1.4c0.4,0.4,1.1,0.3,1.4-0.1C16,13.9,17.9,13,20,13s4,0.9,5.4,2.5c0.2,0.2,0.5,0.4,0.8,0.4c0.2,0,0.5-0.1,0.6-0.2C27.2,15.3,27.2,14.6,26.9,14.2z"></path>
-        </svg></span></button>
-    </form>
-    <div class="edit">
-              
-      <img src="<%=locals.image%>" alt="" width="80px" height="80px">
-    <p class="condition"><%=locals.condition %></p>
-  <p class="country"><%=locals.country %></p>
-  <p class="feelslike">Feels like <%=locals.feelslike%>°</p>
-  <p class="temperatur"><%=locals.temperatur%>°</p>
+  
+  <div class="container col bg-secondary d-flex justify-content-center m-1">
+ <% for(var i=0; i<content.forecastday.length; i++){%>
+    <div class="col m-5">
+    <p class="date"><%=content.forecastday[i].date %></p>
+    <img src="<%=content.forecastday[i].day.condition.icon %>" alt="" width="80px" height="80px">
+  <p class="condition"><%=content.forecastday[i].day.condition.text %></p>
+  <p class="country"><%=country%></p>
+  
+  <p class="temperatur"><%=content.forecastday[i].day.maxtemp_c%>°</p>
   
 </div>
-  </div>
+   
+ <%}%>
+ 
   
-</body>
+</div>
+ <details>
+  <summary>V</summary>
+  <div style="height: 250px; width: 250px; background-color: brown;"></div>
+ </details>
+ 
+ 
 
-</html>
+ 
+ <%- include("partials/footer.ejs") %>
