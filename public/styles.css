@@ -52,6 +52,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-content: center;
     text-align: center;
     align-items: center;
     color: white;
@@ -82,6 +83,7 @@ body {
 .card {
     display: flex;
     flex-direction: column;
+    min-width: 250px;
     width: fit-content;
     height: fit-content;
     justify-content: center;
@@ -97,6 +99,9 @@ body {
 .search {
     display: flex;
     flex-direction: row;
+    
+    margin-left: -15px;
+    width: 260px;
 }
 
 .search-input {
