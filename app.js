@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import axios from "axios";
 import requestIp from "request-ip";
 
+
 const app = express();
 const port = process.env.PORT || 3000;
 const API_URL = "http://api.weatherapi.com/v1/forecast.json";
@@ -20,6 +21,7 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 
 const d = new Date();
 let day = weekday[d.getDay()];
+
 //Home Get
 app.get("/", async (req, res) => {
   const ip = req.clientIp;
@@ -130,7 +132,7 @@ app.post("/vader", async (req, res) => {
   }
 });
 //Vader14 Get
-app.get("/vader14", async (req, res) => {
+app.get("/varld", async (req, res) => {
   try {
     const response = await axios.get(API_URL, {
       auth: {
@@ -139,17 +141,70 @@ app.get("/vader14", async (req, res) => {
       },
       params: {
         key: yourAPIKey,
-        q: 'Halmstad',
-        days: 14,
+        q: 'stockholm',
+        days: 1,
+        lang: "sv",
+      }
+    });
+    const paris = await axios.get(API_URL, {
+      auth: {
+        username: yourUsername,
+        password: yourPassword,
+      },
+      params: {
+        key: yourAPIKey,
+        q: 'paris',
+        days: 1,
+        lang: "sv",
+      }
+    });
+    const dubai = await axios.get(API_URL, {
+      auth: {
+        username: yourUsername,
+        password: yourPassword,
+      },
+      params: {
+        key: yourAPIKey,
+        q: 'dubai',
+        days: 1,
+        lang: "sv",
+      }
+    });
+    const germany = await axios.get(API_URL, {
+      auth: {
+        username: yourUsername,
+        password: yourPassword,
+      },
+      params: {
+        key: yourAPIKey,
+        q: 'germany',
+        days: 1,
+        lang: "sv",
+      }
+    });
+    const spain = await axios.get(API_URL, {
+      auth: {
+        username: yourUsername,
+        password: yourPassword,
+      },
+      params: {
+        key: yourAPIKey,
+        q: 'spain',
+        days: 1,
         lang: "sv",
       }
     });
     const result = JSON.stringify(response.data);
 
-    res.render("vader14.ejs", { content: response.data.forecast, country: response.data.location.name + ", " + response.data.location.region });
+    res.render("varld.ejs", { 
+      content: response.data.forecast, country: response.data.location.name + ", " + response.data.location.region,
+      content1: paris.data.forecast, country1:paris.data.location.name + ", " + paris.data.location.region,
+      content2: dubai.data.forecast, country2:dubai.data.location.name + ", " + dubai.data.location.region,
+      content3: germany.data.forecast, country3:germany.data.location.name + ", " + germany.data.location.region,
+      content4: spain.data.forecast, country4:spain.data.location.name + ", " + spain.data.location.region   });
   } catch (error) {
     console.error("Failed to make request:", error.message);
-    res.render("vader14.ejs", {
+    res.render("varld.ejs", {
       error: error.message, content: error.message
     });
   }
@@ -168,7 +223,9 @@ app.post("/vader14", async (req, res) => {
         days: 14,
         lang: "sv",
       }
+      
     });
+    
     const result = JSON.stringify(response.data);
 
     res.render("vader14.ejs", { content: response.data.forecast, country: response.data.location.name + ", " + response.data.location.region });
@@ -179,8 +236,17 @@ app.post("/vader14", async (req, res) => {
     });
   }
 });
+app.get("/error",(req,res)=>{
+
+  res.render("error.ejs");
+});
+app.get("*",(req,res)=>{
+
+  res.redirect("/error");
+});
 
 
+ 
 
 
 

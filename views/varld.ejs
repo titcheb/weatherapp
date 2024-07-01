@@ -1,0 +1,204 @@
+<%- include("partials/header.ejs") %>
+    <div class="container bgimg">
+        <div class="shadow">
+            <div class="row text-center text-white-50">
+                
+
+            </div>
+
+            <div class="main">
+                <div class="forecasttitle">
+                    <h2>Vädret i Världen</h2><br>
+                    <form action="/vader14" method="post">
+                        
+                        
+                    </form>
+                    <br>
+                    <div class="main-card">
+                                  <!-- Halmstad -->
+                        <% for(var i=0; i<content.forecastday.length; i++){%>
+                            <div class="card">
+                                
+                                <p>
+                                    <%=country%>
+                                </p>
+                                <img src="<%=content.forecastday[i].day.condition.icon %>" alt="" width="80px"
+                                    height="80px">
+                                <p>
+                                    <%=content.forecastday[i].day.condition.text %>
+                                </p>
+
+                                <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                                        class="bi bi-droplet" viewBox="0 1.5 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z" />
+                                        <path fill-rule="evenodd"
+                                            d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z" />
+                                    </svg>
+                                    <%=content.forecastday[i].day.daily_chance_of_rain%>%
+                                </p>
+
+
+
+
+
+                                <p>
+                                    <%=Math.round(content.forecastday[i].day.mintemp_c)%>° /
+                                        <%=Math.round(content.forecastday[i].day.maxtemp_c)%>°
+                                </p>
+                                
+                            </div>
+
+                            <%}%>
+                                  <!-- Halmstad -->
+                                  <!-- Paris -->
+                            <% for(var i=0; i<content1.forecastday.length; i++){%>
+                                <div class="card">
+                                    
+                                    <p>
+                                        <%=country1%>
+                                    </p>
+                                    <img src="<%=content1.forecastday[i].day.condition.icon %>" alt="" width="80px"
+                                        height="80px">
+                                    <p>
+                                        <%=content1.forecastday[i].day.condition.text %>
+                                    </p>
+    
+                                    <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                                            class="bi bi-droplet" viewBox="0 1.5 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z" />
+                                            <path fill-rule="evenodd"
+                                                d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z" />
+                                        </svg>
+                                        <%=content1.forecastday[i].day.daily_chance_of_rain%>%
+                                    </p>
+    
+    
+    
+    
+    
+                                    <p>
+                                        <%=Math.round(content1.forecastday[i].day.mintemp_c)%>° /
+                                            <%=Math.round(content1.forecastday[i].day.maxtemp_c)%>°
+                                    </p>
+                                    
+                                </div>
+    
+                                <%}%>
+                                           <!-- Paris -->
+                                           <!-- Dubai -->
+                                <% for(var i=0; i<content2.forecastday.length; i++){%>
+                                    <div class="card">
+                                        
+                                        <p>
+                                            <%=country2%>
+                                        </p>
+                                        <img src="<%=content2.forecastday[i].day.condition.icon %>" alt="" width="80px"
+                                            height="80px">
+                                        <p>
+                                            <%=content2.forecastday[i].day.condition.text %>
+                                        </p>
+        
+                                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                                                class="bi bi-droplet" viewBox="0 1.5 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z" />
+                                            </svg>
+                                            <%=content2.forecastday[i].day.daily_chance_of_rain%>%
+                                        </p>
+        
+        
+        
+        
+        
+                                        <p>
+                                            <%=Math.round(content2.forecastday[i].day.mintemp_c)%>° /
+                                                <%=Math.round(content2.forecastday[i].day.maxtemp_c)%>°
+                                        </p>
+                                        
+                                    </div>
+        
+                                    <%}%>
+                                              <!-- Dubai -->
+                                              <!-- Germany -->
+                                    <% for(var i=0; i<content3.forecastday.length; i++){%>
+                                        <div class="card">
+                                            
+                                            <p>
+                                                <%=country3%>
+                                            </p>
+                                            <img src="<%=content3.forecastday[i].day.condition.icon %>" alt="" width="80px"
+                                                height="80px">
+                                            <p>
+                                                <%=content3.forecastday[i].day.condition.text %>
+                                            </p>
+            
+                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                                                    class="bi bi-droplet" viewBox="0 1.5 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z" />
+                                                </svg>
+                                                <%=content3.forecastday[i].day.daily_chance_of_rain%>%
+                                            </p>
+            
+            
+            
+            
+            
+                                            <p>
+                                                <%=Math.round(content3.forecastday[i].day.mintemp_c)%>° /
+                                                    <%=Math.round(content3.forecastday[i].day.maxtemp_c)%>°
+                                            </p>
+                                            
+                                        </div>
+            
+                                        <%}%>
+                                        <!-- Germany -->
+                                        <!-- Spain -->
+                                    <% for(var i=0; i<content4.forecastday.length; i++){%>
+                                        <div class="card">
+                                            
+                                            <p>
+                                                <%=country4%>
+                                            </p>
+                                            <img src="<%=content4.forecastday[i].day.condition.icon %>" alt="" width="80px"
+                                                height="80px">
+                                            <p>
+                                                <%=content4.forecastday[i].day.condition.text %>
+                                            </p>
+            
+                                            <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                                                    class="bi bi-droplet" viewBox="0 1.5 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z" />
+                                                </svg>
+                                                <%=content4.forecastday[i].day.daily_chance_of_rain%>%
+                                            </p>
+            
+            
+            
+            
+            
+                                            <p>
+                                                <%=Math.round(content4.forecastday[i].day.mintemp_c)%>° /
+                                                    <%=Math.round(content4.forecastday[i].day.maxtemp_c)%>°
+                                            </p>
+                                            
+                                        </div>
+            
+                                        <%}%>
+                                        <!-- Spain -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
