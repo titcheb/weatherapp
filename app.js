@@ -10,19 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 //TODO 1: Fill in your values for the 3 types of auth.
 const yourUsername = "titche";
-
 const yourPassword = "bunjaku90";
 const yourAPIKey = "a8789d617457406f8dc101750240406";
 const yourBearerToken = "966ec5ef-4571-43dd-8aee-3d4d14446586";
-let data = false;
-const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-const d = new Date();
-let day = weekday[d.getDay()];
-
 //Home Get
 app.get("/", async (req, res) => {
-  const ip = req.clientIp;
+  
 
   try {
     const response = await axios.get(API_URL, {
