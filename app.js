@@ -18,8 +18,7 @@ const yourAPIKey = "a8789d617457406f8dc101750240406";
 const yourBearerToken = "966ec5ef-4571-43dd-8aee-3d4d14446586";
 
 
-const d = new Date();
-let day = weekday[d.getDay()];
+
 
 //Home Get
 app.get("/", async (req, res) => {
