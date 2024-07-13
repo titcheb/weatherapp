@@ -1,12 +1,14 @@
-import express from "express";
+import express, { response } from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import requestIp from "request-ip";
 
 
 const app = express();
 const port = process.env.PORT || 3000;
 const API_URL = "http://api.weatherapi.com/v1/forecast.json";
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(requestIp.mw());
 app.use(express.static("public"));
 //TODO 1: Fill in your values for the 3 types of auth.
 const yourUsername = "titche";
@@ -242,6 +244,6 @@ app.get("*",(req,res)=>{
 
 
 // Server
-app.listen(port, () => {
+app.listen(port,'0.0.0.0', () => {
   console.log(`Listening on port ${port}`);
 });
