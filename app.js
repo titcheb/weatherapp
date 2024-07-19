@@ -32,13 +32,34 @@ app.get("/", async (req, res) => {
       },
       params: {
         key: yourAPIKey,
-        q: 'Halmstad',
-        lang: "sv",
+        q: 'usa',
+        lang: "en",
+      }
+    });
+    const hourly = await axios.get(API_URL, {
+      auth: {
+        username: yourUsername,
+        password: yourPassword,
+      },
+      params: {
+        key: yourAPIKey,
+        q: 'Vushtrri',
+        lang: "en",
       }
     });
     
+    
     const result = JSON.stringify(response.data);
-    res.render("index.ejs", { image: response.data.current.condition.icon, condition: response.data.current.condition.text, country: response.data.location.name + ", " + response.data.location.region, feelslike: Math.round(response.data.current.feelslike_c), temperatur: Math.round(response.data.current.temp_c),wind:Math.round(response.data.current.wind_kph) });
+    res.render("index.ejs", { 
+      image: response.data.current.condition.icon, 
+      condition: response.data.current.condition.text, 
+      country: response.data.location.name + ", " + response.data.location.region, 
+      feelslike: Math.round(response.data.current.feelslike_c), 
+      temperatur: Math.round(response.data.current.temp_c),
+      wind:Math.round(response.data.current.wind_kph),
+      /* Hourly Request */
+      time:hourly.data.forecast.forecastday[0]
+    });
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.render("index.ejs", {
@@ -67,8 +88,27 @@ app.post("/", async (req, res) => {
         lang: "sv",
       }
     });
+    const hourly = await axios.get(API_URL, {
+      auth: {
+        username: yourUsername,
+        password: yourPassword,
+      },
+      params: {
+        key: yourAPIKey,
+        q: req.body.City,
+        lang: "sv",
+      }
+    });
     const result = JSON.stringify(response.data);
-    res.render("index.ejs", { image: response.data.current.condition.icon, condition: response.data.current.condition.text, country: response.data.location.name + ", " + response.data.location.region, feelslike: response.data.current.feelslike_c, temperatur: Math.round(response.data.current.temp_c), wind:Math.round(response.data.current.wind_kph)});
+    res.render("index.ejs", {
+       image: response.data.current.condition.icon,
+        condition: response.data.current.condition.text,
+         country: response.data.location.name + ", " + response.data.location.region,
+          feelslike: response.data.current.feelslike_c,
+           temperatur: Math.round(response.data.current.temp_c),
+            wind:Math.round(response.data.current.wind_kph),
+            time:hourly.data.forecast.forecastday[0]
+          });
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.render("index.ejs", {
